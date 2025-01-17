@@ -92,4 +92,20 @@ test('performs addition with multi-digit numbers', () => {
     expect(screen.getByDisplayValue('30')).toBeInTheDocument();
   });
   
+
+  // Test case to check if multiple operations work correctly
+test('performs multiple operations correctly', () => {
+    render(<Calculator />);
+    
+    fireEvent.click(screen.getByText('2'));
+    fireEvent.click(screen.getByText('+'));
+    fireEvent.click(screen.getByText('3'));
+    fireEvent.click(screen.getByText('*'));
+    fireEvent.click(screen.getByText('4'));
+    fireEvent.click(screen.getByText('='));
+    
+    // Check if the result '14' is displayed (2 + 3 * 4 = 14)
+    expect(screen.getByDisplayValue('14')).toBeInTheDocument();
+  });
+  
   
