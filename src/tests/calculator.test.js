@@ -58,4 +58,23 @@ test('performs division', () => {
     // Check if the result '3' is displayed in the calculator (the result of 12 / 4)
     expect(screen.getByDisplayValue('3')).toBeInTheDocument(); // Checking the value of the input field
   });
+
+  // Test case to check if clear operation works correctly
+test('clears the input when C is clicked', () => {
+    render(<Calculator />);
+    fireEvent.click(screen.getByText('2'));
+    fireEvent.click(screen.getByText('+'));
+    fireEvent.click(screen.getByText('3'));
+    fireEvent.click(screen.getByText('='));
+    
+    // Check if the result is displayed correctly after addition
+    expect(screen.getByDisplayValue('5')).toBeInTheDocument();
+  
+    // Now press the "C" button to clear the input
+    fireEvent.click(screen.getByText('C'));
+  
+    // Check if the input is cleared
+    expect(screen.getByDisplayValue('')).toBeInTheDocument(); // Input should be empty
+  });
+  
   
