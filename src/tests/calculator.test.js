@@ -76,5 +76,20 @@ test('clears the input when C is clicked', () => {
     // Check if the input is cleared
     expect(screen.getByDisplayValue('')).toBeInTheDocument(); // Input should be empty
   });
+
+  // Test case to check if multi-digit numbers work correctly
+test('performs addition with multi-digit numbers', () => {
+    render(<Calculator />);
+    
+    fireEvent.click(screen.getByText('1'));
+    fireEvent.click(screen.getByText('0')); // 10
+    fireEvent.click(screen.getByText('+'));
+    fireEvent.click(screen.getByText('2'));
+    fireEvent.click(screen.getByText('0')); // 20
+    fireEvent.click(screen.getByText('='));
+    
+    // Check if the result '30' is displayed in the calculator
+    expect(screen.getByDisplayValue('30')).toBeInTheDocument();
+  });
   
   
